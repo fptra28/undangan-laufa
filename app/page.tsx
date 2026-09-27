@@ -11,9 +11,8 @@ import Event from '../components/Event';
 import Countdown from '../components/Countdown';
 import Gallery from '../components/Gallery';
 import RSVP from '../components/RSVP';
-import ParticleBackground from '../components/ParticleBackground';
 import ScrollProgress from '../components/ScrollProgress';
-import { CustomCursor, DigitalGift, FinalCommit, Guestbook, MiniTerminal, MusicPlayer, Navigation } from '../components/InvitationExtras';
+import { DigitalGift, FinalCommit, Guestbook, MusicPlayer, Navigation } from '../components/InvitationExtras';
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -36,8 +35,6 @@ export default function Home() {
       <AnimatePresence>
         {!opened && <OpeningScreen guestName={guestName} onOpen={() => setOpened(true)} />}
       </AnimatePresence>
-      <ParticleBackground />
-      {opened && <CustomCursor />}
       <ScrollProgress />
       <Navigation />
       <div className="invitation-content relative z-[1]">
@@ -54,7 +51,6 @@ export default function Home() {
         <FinalCommit />
       </div>
       <MusicPlayer />
-      <MiniTerminal />
     </main>
   );
 }
