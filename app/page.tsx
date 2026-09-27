@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import OpeningScreen from '../components/OpeningScreen'
 
-const milestones = [
-  { year: '2021', title: 'First commit', text: 'Sebuah percakapan sederhana berubah menjadi branch yang paling berarti.' },
-  { year: '2024', title: 'Merge request', text: 'Bertumbuh bersama, belajar saling memahami, dan memilih pulang ke rumah yang sama.' },
-  { year: '2031', title: 'Production release', text: 'Dengan penuh syukur, kami siap merayakan versi terbaik dari kisah ini.' },
+const chapters = [
+  { number: '01', date: '2021', title: 'The first commit', text: 'Berawal dari percakapan sederhana, lalu tumbuh menjadi cerita yang ingin kami jalani bersama.' },
+  { number: '02', date: '2024', title: 'A shared branch', text: 'Kami belajar bahwa rumah bukan hanya tempat, tetapi seseorang yang selalu ingin kita tuju.' },
+  { number: '03', date: '2031', title: 'The release', text: 'Hari ini kami memilih satu sama lain, untuk setiap versi hidup yang akan datang.' },
 ]
 
 export default function Home() {
@@ -22,137 +22,50 @@ export default function Home() {
     return () => document.body.classList.remove('no-scroll')
   }, [opened])
 
-  const copyAddress = async () => {
-    await navigator.clipboard?.writeText('The Langham Jakarta, 30 Oktober 2031')
+  const copyVenue = async () => {
+    await navigator.clipboard?.writeText('The Langham Jakarta, District 8 SCBD')
     setCopied(true)
     window.setTimeout(() => setCopied(false), 1800)
   }
 
   return (
-    <main className="site-shell">
+    <main className="invitation-app">
       <AnimatePresence>{!opened && <OpeningScreen guestName={guestName} onOpen={() => setOpened(true)} />}</AnimatePresence>
-      <nav className="topbar">
-        <a className="brand" href="#home"><span className="brand-mark">&lt;/&gt;</span> programingh<span className="brand-dot">.</span></a>
-        <div className="nav-links"><a href="#story">Story</a><a href="#event">Event</a><a href="#rsvp">RSVP</a></div>
-        <a className="nav-cta" href="#rsvp">Join us <span>↗</span></a>
-      </nav>
 
-      <section id="home" className="hero-new section-wrap">
-        <div className="hero-copy">
-          <p className="eyebrow"><span className="status-dot" /> deployment date · 30.10.2031</p>
+      <header className="site-header">
+        <a className="wordmark" href="#top"><span>&lt;/&gt;</span> programingh</a>
+        <nav aria-label="Navigasi undangan"><a href="#story">Story</a><a href="#event">Event</a><a href="#rsvp">RSVP</a></nav>
+        <a className="header-button" href="#rsvp">Join us <span>↗</span></a>
+      </header>
+
+      <section id="top" className="hero-section page-section">
+        <div className="hero-intro">
+          <p className="kicker"><i /> digital wedding invitation · 30.10.2031</p>
           <h1>Two minds.<br /><em>One lifetime.</em></h1>
-          <p className="hero-lede">Kami menemukan partner terbaik untuk membangun hidup bersama. Kini saatnya merayakan launch day kami.</p>
-          <div className="hero-actions"><a className="button button-primary" href="#event">View invitation <span>↓</span></a><a className="text-link" href="#story">Read our story <span>→</span></a></div>
+          <p className="hero-description">Kami mengundangmu untuk merayakan hari ketika dua perjalanan memilih arah yang sama.</p>
+          <div className="hero-links"><a className="solid-button" href="#event">Open invitation <span>↓</span></a><a className="under-link" href="#story">Read our story <span>→</span></a></div>
         </div>
-        <div className="hero-card" aria-label="Foto pasangan">
-          <div className="hero-photo"><div className="photo-placeholder"><span>F</span><span>&</span><span>L</span></div></div>
-          <div className="hero-caption"><span>Faturrahman & Laura</span><span className="mono">v.2031</span></div>
+        <div className="portrait-card">
+          <div className="portrait-frame"><div className="portrait-monogram"><span>F</span><b>&amp;</b><span>L</span></div><span className="portrait-label">Faturrahman<br />&amp; Laura</span></div>
+          <div className="portrait-meta"><span>Jakarta, Indonesia</span><span>30 — 10 — 31</span></div>
         </div>
       </section>
 
-      <div className="ticker"><span>love is the best feature</span><span>✦</span><span>compiled with intention</span><span>✦</span><span>love is the best feature</span></div>
+      <div className="marquee" aria-hidden="true"><span>love is the best feature</span><b>✦</b><span>compiled with intention</span><b>✦</b><span>love is the best feature</span></div>
 
-      <section id="story" className="story-new section-wrap">
-        <div className="section-intro"><p className="eyebrow">01 — our changelog</p><h2>Built with patience,<br /><em>shipped with love.</em></h2></div>
-        <div className="timeline">{milestones.map((item) => <article className="timeline-item" key={item.year}><div className="timeline-year">{item.year}</div><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div>
+      <section id="story" className="story-section page-section">
+        <div className="section-heading"><p className="kicker">01 / our changelog</p><h2>Built with patience,<br /><em>shipped with love.</em></h2></div>
+        <div className="chapter-list">{chapters.map((chapter) => <article className="chapter" key={chapter.number}><span className="chapter-number">{chapter.number}</span><span className="chapter-date">{chapter.date}</span><div><h3>{chapter.title}</h3><p>{chapter.text}</p></div></article>)}</div>
       </section>
 
-      <section id="event" className="event-new section-wrap">
-        <div className="event-panel"><div><p className="eyebrow">02 — launch event</p><h2>Save the<br /><em>date.</em></h2><p className="event-note">Kami mengundang {guestName} untuk hadir dan menjadi bagian dari hari paling berarti bagi kami.</p></div><div className="event-details"><div><span className="detail-label">Date</span><strong>Thursday, 30 October 2031</strong></div><div><span className="detail-label">Time</span><strong>18:00 — 21:00 WIB</strong></div><div><span className="detail-label">Venue</span><strong>The Langham Jakarta<br />District 8, SCBD</strong></div><button className="copy-button" onClick={copyAddress}>{copied ? 'Address copied' : 'Copy venue address'} <span>⌘ C</span></button></div></div>
+      <section id="event" className="event-section page-section">
+        <div className="event-card"><div className="event-title"><p className="kicker">02 / launch event</p><h2>Save the<br /><em>date.</em></h2><p>Untuk {guestName}, kami menantikan kehadiranmu di hari istimewa ini.</p></div><div className="event-info"><div><small>DATE</small><strong>Thursday, 30 October 2031</strong></div><div><small>TIME</small><strong>18:00 — 21:00 WIB</strong></div><div><small>VENUE</small><strong>The Langham Jakarta<br />District 8, SCBD</strong></div><button onClick={copyVenue}>{copied ? 'Address copied' : 'Copy venue address'} <span>⌘ C</span></button></div></div>
       </section>
 
-      <section id="rsvp" className="rsvp-new section-wrap"><p className="eyebrow">03 — attendance</p><h2>Will you join<br /><em>our release?</em></h2><p>Konfirmasi kehadiranmu untuk membantu kami mempersiapkan hari ini.</p><a className="button button-primary" href="mailto:hello@programingh.love?subject=RSVP%20Faturrahman%20%26%20Laura">Confirm attendance <span>↗</span></a></section>
+      <section id="rsvp" className="rsvp-section page-section"><p className="kicker">03 / attendance</p><h2>Will you join<br /><em>our release?</em></h2><p>Konfirmasi kehadiranmu dan mari rayakan chapter baru ini bersama kami.</p><a className="solid-button" href="mailto:hello@programingh.love?subject=RSVP%20Faturrahman%20%26%20Laura">Confirm attendance <span>↗</span></a></section>
 
-      <footer className="footer-new"><div className="brand"><span className="brand-mark">&lt;/&gt;</span> programingh<span className="brand-dot">.</span></div><p>Made with intention by Faturrahman & Laura.</p><span className="mono">© 2031 · all rights reserved</span></footer>
+      <footer className="site-footer"><a className="wordmark" href="#top"><span>&lt;/&gt;</span> programingh</a><p>Made with intention by Faturrahman &amp; Laura.</p><small>© 2031 · all rights reserved</small></footer>
     </main>
   )
 }
 
-const _motion = motion
-void _motion
-
-export const metadata = undefined
-
-export function generateStaticParams() { return [] }
-
-export const dynamic = 'force-static'
-
-export const revalidate = 3600
-
-export const runtime = 'nodejs'
-
-export const preferredRegion = 'auto'
-
-export const maxDuration = 60
-
-export const fetchCache = 'auto'
-
-export const dynamicParams = true
-
-export const viewport = undefined
-
-export const robots = undefined
-
-export const alternates = undefined
-
-export const icons = undefined
-
-export const manifest = undefined
-
-export const keywords = undefined
-
-export const authors = undefined
-
-export const openGraph = undefined
-
-export const twitter = undefined
-
-export const verification = undefined
-
-export const archives = undefined
-
-export const assets = undefined
-
-export const category = undefined
-
-export const classification = undefined
-
-export const creator = undefined
-
-export const publisher = undefined
-
-export const formatDetection = undefined
-
-export const other = undefined
-
-export const appleWebApp = undefined
-
-export const appLinks = undefined
-
-export const bookmarks = undefined
-
-export const abstract = undefined
-
-export const generator = undefined
-
-export const referrer = undefined
-
-export const themeColor = undefined
-
-export const colorScheme = undefined
-
-export const viewportFit = undefined
-
-export const verificationToken = undefined
-
-export const metadataBase = undefined
-
-export const title = undefined
-
-export const description = undefined
-
-export const robotsTxt = undefined
-
-export const headers = undefined
-
-export const sitemap = undefined
