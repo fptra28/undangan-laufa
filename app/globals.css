@@ -498,17 +498,97 @@ body.no-scroll {
   .invitation-content #gallery .grid > * {
     min-width: 0;
   }
+}
 
-  .invitation-content #gallery .aspect-\[4\/5\] {
-    min-height: 11rem;
+/* Final responsive pass: preserve a calm reading width and prevent long
+   names, code samples, and controls from forcing horizontal scrolling. */
+:where(button, a, input, textarea, select) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, a):focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.invitation-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.invitation-content > section {
+  width: 100%;
+  min-width: 0;
+}
+
+.invitation-content #home h1 {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(2.35rem, 5.2vw, 4.75rem);
+}
+
+.invitation-content #home .code-block {
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .invitation-content > section {
+    padding-inline: 1rem;
   }
 
-  .invitation-content #rsvp .grid-cols-2 {
-    gap: 0.5rem;
+  .invitation-content > section:first-child {
+    padding-inline: 1rem;
   }
 
-  .invitation-content #rsvp .grid-cols-2 button {
-    padding-inline: 0.5rem;
-    font-size: 0.72rem;
+  .invitation-content #home h1 {
+    font-size: clamp(2.1rem, 10.5vw, 3.2rem);
+    letter-spacing: -0.03em;
+  }
+
+  .invitation-content #home .flex.items-center.justify-center.gap-4 {
+    gap: 0.75rem;
+  }
+
+  .invitation-content #home .flex.items-center.justify-center.gap-4 > div {
+    width: 2.25rem;
+  }
+
+  .invitation-content .code-block,
+  .invitation-content .terminal-block {
+    border-radius: 0.75rem;
+  }
+
+  .invitation-content .code-block {
+    padding-inline: 0.85rem;
+    font-size: clamp(0.62rem, 2.6vw, 0.72rem);
+  }
+
+  .invitation-content [class*="grid-cols-2"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .invitation-content [class*="grid-cols-2"] > * {
+    min-width: 0;
+  }
+
+  .invitation-content #gallery .grid[class*="grid-cols-2"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+@media (min-width: 768px) {
+  .invitation-content > section {
+    padding-inline: clamp(2rem, 6vw, 5rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .invitation-content #home .font-mono {
+    letter-spacing: 0.12em;
+  }
+
+  .invitation-content #home .code-block {
+    font-size: 0.61rem;
+  }
+}
+

@@ -10,8 +10,8 @@ const links = [['Home', '#home'], ['Story', '#story'], ['Couple', '#couple'], ['
 export function Navigation() {
   const [open, setOpen] = useState(false);
   return <>
-    <header className="fixed top-0 z-40 w-full border-b border-border bg-background/75 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4" aria-label="Navigasi undangan">
+    <header className="fixed inset-x-0 top-0 z-40 w-full border-b border-border bg-background/75 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-5 sm:py-4" aria-label="Navigasi undangan">
         <a href="#home" className="font-serif text-lg text-gold-light">F <span className="text-gold">&amp;</span> L</a>
         <div className="hidden items-center gap-6 md:flex">{links.map(([label, href]) => <a key={href} className="text-[11px] font-mono tracking-wider text-muted transition hover:text-gold" href={href}>{label}</a>)}</div>
         <button className="rounded-md border border-border p-2 text-gold md:hidden" aria-label="Buka menu" onClick={() => setOpen(!open)}>{open ? <X size={17}/> : <Menu size={17}/>}</button>
