@@ -61,7 +61,7 @@ export default function OpeningScreen({ guestName, onOpen }: OpeningScreenProps)
 
   return (
       <motion.div
-        className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background overflow-hidden"
+        className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#0b0a09] px-5"
         exit={{
           opacity: 0,
           scale: 1.1,

@@ -181,6 +181,142 @@ body.no-scroll {
   100% { transform: translateY(40px); }
 }
 
+/* Programingh editorial invitation refresh */
+.invitation-page {
+  --invitation-width: 1120px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(205, 161, 58, .10), transparent 34rem),
+    linear-gradient(180deg, #090909 0%, #0c0b0b 48%, #080808 100%);
+}
+
+.invitation-content > section,
+.invitation-content > footer {
+  width: min(100%, var(--invitation-width));
+  margin-inline: auto;
+  text-align: center;
+}
+
+.invitation-content > section {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+.invitation-content > section + section {
+  border-top: 1px solid rgba(205, 161, 58, .10);
+}
+
+.invitation-content section > .relative,
+.invitation-content footer > .relative {
+  width: min(100%, 920px);
+  margin-inline: auto;
+}
+
+.invitation-content .grid {
+  justify-items: center;
+}
+
+.invitation-content .grid > * {
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+.invitation-content h1,
+.invitation-content h2,
+.invitation-content h3,
+.invitation-content p {
+  text-align: center;
+}
+
+.invitation-content h2 {
+  max-width: 720px;
+  margin-inline: auto;
+  letter-spacing: -.025em;
+}
+
+.invitation-content section > div > .mb-10,
+.invitation-content section > div > .text-center {
+  margin-inline: auto;
+}
+
+.invitation-content .glass,
+.invitation-content .glass-gold,
+.invitation-content .terminal-block,
+.invitation-content .code-block {
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 70px rgba(0, 0, 0, .22);
+}
+
+.invitation-content form,
+.invitation-content article,
+.invitation-content [class*="rounded-2xl"] {
+  text-align: center;
+}
+
+.invitation-content label {
+  text-align: left;
+}
+
+.invitation-content input,
+.invitation-content textarea {
+  text-align: left;
+}
+
+.invitation-page > [class*="z-[100]"] .terminal-block {
+  border-color: rgba(205, 161, 58, .22);
+  background: rgba(13, 12, 11, .82);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255,255,255,.02);
+}
+
+.invitation-page > [class*="z-[100]"] .terminal-header {
+  background: rgba(255, 255, 255, .035);
+}
+
+.invitation-page > [class*="z-[100]"] .terminal-body {
+  padding: 1.25rem 1.35rem;
+}
+
+@media (max-width: 640px) {
+  .invitation-page > [class*="z-[100]"] .flex.flex-col.items-center.gap-8 {
+    gap: 1.35rem;
+  }
+
+  .invitation-page > [class*="z-[100]"] .font-serif.text-3xl {
+    font-size: 2.35rem;
+    line-height: 1.04;
+  }
+
+  .invitation-page > [class*="z-[100]"] .mt-6 {
+    margin-top: 1rem;
+  }
+
+  .invitation-content > section {
+    padding-inline: 1.125rem;
+    padding-block: 4.25rem;
+  }
+
+  .invitation-content > section:first-child {
+    padding-top: 5.75rem;
+  }
+
+  .invitation-content h2 {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    line-height: 1.08;
+  }
+
+  .invitation-content .grid {
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 /* ========================================
    UTILITY CLASSES
    ======================================== */
