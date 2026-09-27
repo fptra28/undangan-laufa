@@ -500,6 +500,82 @@ body.no-scroll {
   }
 }
 
+/* Centered rhythm and tighter spacing across the invitation. */
+.invitation-content > section {
+  text-align: center;
+}
+
+.invitation-content > section > div {
+  margin-inline: auto;
+}
+
+.invitation-content [class*='grid'] {
+  justify-items: center;
+}
+
+.invitation-content [class*='grid'] > * {
+  width: 100%;
+  max-width: 42rem;
+}
+
+.invitation-content form,
+.invitation-content form label {
+  text-align: center;
+}
+
+.invitation-content input,
+.invitation-content textarea,
+.invitation-content select {
+  text-align: center;
+}
+
+.invitation-content .flex.items-center.justify-between {
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.invitation-content > section .mt-10 {
+  margin-top: 2rem;
+}
+
+.invitation-content > section .mt-9 {
+  margin-top: 1.5rem;
+}
+
+.invitation-content > section .mb-10 {
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 767px) {
+  .invitation-content > section {
+    padding-block: 3.75rem;
+  }
+
+  .invitation-content > section:first-child {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+
+  .invitation-content [class*='grid-cols-'] {
+    gap: 1rem;
+  }
+
+  .invitation-content .p-6 {
+    padding: 1.25rem;
+  }
+
+  .invitation-content .p-5 {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .invitation-content [class*='grid-cols-'] {
+    gap: 1.5rem;
+  }
+}
+
 /* Final responsive pass: preserve a calm reading width and prevent long
    names, code samples, and controls from forcing horizontal scrolling. */
 :where(button, a, input, textarea, select) {
